@@ -12,7 +12,7 @@ import webbrowser as wb
 class colors:
     def __init__(self):
         self.darkMode = ['#36393F', '#2F3136', 'white', '#292B2F']
-        self.segmentColors = ['#71b8eb', '#b1ddfc', '#707070', "#fff5a8", '#8d56ba', "#d97796", '#000000', "32FF00"]
+        self.segmentColors = ['#2f8a2f', '#9bc99b', '#f7d8c3', "#223fe3", '#000000', "32FF00"]
 
 class DataManager():
     def __init__(self, parent):
@@ -26,7 +26,7 @@ class DataManager():
         # Statistic vars used to display stats about the current dataset
         self.currentSegCount = 0
         self.segVals   = []
-        self.segLabelsConst = ['Water', 'Thin Ice', 'Shadow', 'Sub Ice', 'Snow', 'Melt Pond']
+        self.segLabelsConst = ['Forest', 'Clearing', 'Deforestation', 'Water']
         self.segLabels = []     
         self.segCols   = []
         self.segPcts   = []
@@ -97,7 +97,7 @@ class DataManager():
         counts = list(listParam.count(i) for i in range(6))
         bools = list(counts[i] > 0 for i in range(6))
 
-        nameList = ["Water", "Thin Ice", "Shadow", "Snow", "Sub Ice", "Melt Pond"]
+        nameList = ['Forest', 'Clearing', 'Deforestation', 'Water']
         
         for i, v in enumerate(bools):
             if v:
@@ -105,7 +105,7 @@ class DataManager():
                 segCols.append(self.c.segmentColors[i])
                 segLabels.append(nameList[i])
                     
-        segPcts = list((counts[i] / self.currentSegCount) * 100 for i in range(6))
+        segPcts = list((counts[i] / self.currentSegCount) * 100 for i in range(4))
         
         self.segLabels = segLabels
         self.segVals   = segVals
@@ -267,23 +267,32 @@ class ButtonsLeft(tk.Frame):
         openDatasetButton = tk.Button(self, text='Open\nDataset', height=4, width=8, highlightthickness=0,fg=c.darkMode[2], bg=c.darkMode[1], command=lambda: self.openDataset())
         openDatasetButton.grid(row=0, pady=(0, 55))
         
-        meltPondLabel = tk.Label(self, text='Melt\nPond', font=(None, 12), fg=c.segmentColors[5], bg=c.darkMode[1])
-        meltPondLabel.grid(row=0, pady=(105, 0))
+        # meltPondLabel = tk.Label(self, text='Melt\nPond', font=(None, 12), fg=c.segmentColors[5], bg=c.darkMode[1])
+        # meltPondLabel.grid(row=0, pady=(105, 0))
         
-        subIceLabel = tk.Label(self, text='Sub\nIce', font=(None, 12), fg=c.segmentColors[4], bg=c.darkMode[1])
-        subIceLabel.grid(row=0, pady=(280, 0))
+        # subIceLabel = tk.Label(self, text='Sub\nIce', font=(None, 12), fg=c.segmentColors[4], bg=c.darkMode[1])
+        # subIceLabel.grid(row=0, pady=(280, 0))
         
-        snowLabel = tk.Label(self, text='Snow', font=(None, 12), fg=c.segmentColors[3], bg=c.darkMode[1])
-        snowLabel.grid(row=0, pady=(190, 0))
+        # snowLabel = tk.Label(self, text='Snow', font=(None, 12), fg=c.segmentColors[3], bg=c.darkMode[1])
+        # snowLabel.grid(row=0, pady=(190, 0))
         
-        shadowLabel = tk.Label(self, text='Shadow', font=(None, 12),fg=c.segmentColors[2], bg=c.darkMode[1])
-        shadowLabel.grid(row=0, pady=(360, 0))
+        # shadowLabel = tk.Label(self, text='Shadow', font=(None, 12),fg=c.segmentColors[2], bg=c.darkMode[1])
+        # shadowLabel.grid(row=0, pady=(360, 0))
         
-        thinIceLabel = tk.Label(self, text='Thin\nIce', font=(None, 12),fg=c.segmentColors[1], bg=c.darkMode[1])
-        thinIceLabel.grid(row=0, pady=(450,0))
+        # thinIceLabel = tk.Label(self, text='Thin\nIce', font=(None, 12),fg=c.segmentColors[1], bg=c.darkMode[1])
+        # thinIceLabel.grid(row=0, pady=(450,0))
         
         waterLabel = tk.Label(self, text='Water', font=(None, 12),fg=c.segmentColors[0], bg=c.darkMode[1])
         waterLabel.grid(row=0, pady=(525,0))
+        
+        deforestLabel = tk.Label(self, text='Deforestation', font=(None, 12),fg=c.segmentColors[1], bg=c.darkMode[1])
+        deforestLabel.grid(row=0, pady=(525,0))
+        
+        clearLabel = tk.Label(self, text='Clearing', font=(None, 12),fg=c.segmentColors[2], bg=c.darkMode[1])
+        clearLabel.grid(row=0, pady=(525,0))
+        
+        forestLabel = tk.Label(self, text='Forest', font=(None, 12),fg=c.segmentColors[3], bg=c.darkMode[1])
+        forestLabel.grid(row=0, pady=(525,0))
         
         self.imgIDS = []
         
@@ -436,7 +445,7 @@ class ButtonsRight(tk.Frame):
             self.parent.ImageDisplay.updateImages()
         
     def getHelp(self):
-        wb.open('https://github.com/CjMoor3/ArcCI-Collab-Repo/wiki/ViewCOCO')
+        wb.open('https://github.com/CjMoor3/Automatic-Detection-of-Deforested-Regions-using-DL/wiki')
         
     def nextSegment(self):
         index = 0
