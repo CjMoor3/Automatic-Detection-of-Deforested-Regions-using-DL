@@ -36,34 +36,19 @@ class createCOCO:
                                         [
                                         {
                                         'id': 0,
-                                        'name': 'Water',
+                                        'name': 'Forest',
                                         'supercategory': 'geo'
                                         },
                                         {
                                         'id': 1,
-                                        'name': 'Thin Ice',
+                                        'name': 'Clearing',
                                         'supercategory': 'geo'
                                         },
                                         {
                                         'id': 2,
-                                        'name': 'Shadow',
+                                        'name': 'Deforestation',
                                         'supercategory': 'geo'
                                         },
-                                        {
-                                        'id': 3,
-                                        'name': 'Ice/Snow',
-                                        'supercategory': 'geo'
-                                        },
-                                        {
-                                        'id': 4,
-                                        'name': 'Sub Ice',
-                                        'supercategory': 'geo'
-                                        },
-                                        {
-                                        'id': 5,
-                                        'name': 'Melt Pond',
-                                        'supercategory': 'geo'
-                                        }
                                         ]
                             }
 
