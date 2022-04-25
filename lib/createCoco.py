@@ -41,11 +41,6 @@ class createCOCO:
                                         },
                                         {
                                         'id': 1,
-                                        'name': 'Clearing',
-                                        'supercategory': 'geo'
-                                        },
-                                        {
-                                        'id': 2,
                                         'name': 'Deforestation',
                                         'supercategory': 'geo'
                                         },
